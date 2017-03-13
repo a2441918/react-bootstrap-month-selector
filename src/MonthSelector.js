@@ -1,39 +1,38 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
-import { Glyphicon, Button } from 'react-bootstrap';
-import moment from 'moment';
+import { Glyphicon, Button } from "react-bootstrap";
+import moment from "moment";
 
 const styles = {
   yearNav: {
-    display: 'flex',
-    alignItems: 'center',
-    margin: '0 1px 5px',
+    display: "flex",
+    alignItems: "center",
+    margin: "0 1px 5px",
   },
 
-  yearLabel: {
-    flex: '1',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    margin: '0 2px',
+  yearButton: {
+    flex: "1",
+    textAlign: "center",
+    margin: "0 2px",
   },
 
-  yearLabelSpan: {
-    verticalAlign: 'middle',
+  yearButtonText: {
+    verticalAlign: "middle",
+    fontWeight: "bold",
   },
 
   monthContainer: {
-    display: 'inline-block',
-    padding: '1px',
-    width: '25%',
-    boxSizing: 'border-box',
+    display: "inline-block",
+    padding: "1px",
+    width: "25%",
+    boxSizing: "border-box",
   },
 
   monthButton: {
-    lineHeight: '3em',
-    textAlign: 'center',
-    width: '100%',
-  }
+    lineHeight: "3em",
+    textAlign: "center",
+    width: "100%",
+  },
 };
 
 class MonthSelector extends React.Component {
@@ -56,17 +55,17 @@ class MonthSelector extends React.Component {
   }
 
   onPrevYear() {
-    this.setState({year: this.state.year - 1});
+    this.setState({ year: this.state.year - 1 });
   }
 
   onNextYear() {
-    this.setState({year: this.state.year + 1});
+    this.setState({ year: this.state.year + 1 });
   }
 
   onSelect(month) {
     this.props.onSelect({
       month,
-      year: this.state.year
+      year: this.state.year,
     });
   }
 
@@ -75,17 +74,17 @@ class MonthSelector extends React.Component {
   }
 
   renderMonth(month) {
-    const selected =
-      this.props.month === month &&
+    const selected = this.props.month === month &&
       this.props.year === this.state.year;
 
     return (
       <div style={styles.monthContainer} key={month}>
         <Button
-          bsStyle={selected ? 'complete' : 'transparent'}
+          bsStyle={selected ? "complete" : "transparent"}
           style={styles.monthButton}
-          onClick={() => this.onSelect(month)}>
-          {moment().month(month - 1).format('MMM')}
+          onClick={() => this.onSelect(month)}
+        >
+          {moment().month(month - 1).format("MMM")}
         </Button>
       </div>
     );
@@ -107,8 +106,11 @@ class MonthSelector extends React.Component {
             bsSize="small"
             bsStyle="transparent"
             onClick={this.onResetYear}
-            style={styles.yearLabel}>
-            <span style={styles.yearLabelSpan} className="block-header">{this.state.year}</span>
+            style={styles.yearButton}
+          >
+            <span style={styles.yearButtonText} className="block-header">
+              {this.state.year}
+            </span>
           </Button>
           <Button bsSize="small" onClick={this.onNextYear}>
             <Glyphicon glyph="chevron-right" />
