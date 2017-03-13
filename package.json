@@ -1,8 +1,8 @@
 {
   "name": "react-bootstrap-month-selector",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
     "lint": "prettier --trailing-comma es5 --write  \"{src,stories}/**/*.js\"",
