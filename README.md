@@ -2,6 +2,8 @@
 
 Form control to select a single month or a range of months.
 
+<img src="docs/popover.png" alt="Month range selector" width="307" />
+
 ## Usage
 
     npm install react-bootstrap-month-selector --save
