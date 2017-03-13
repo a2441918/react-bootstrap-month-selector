@@ -4,6 +4,11 @@ import moment from "moment";
 
 import MonthSelector from "./MonthSelector";
 
+const monthPropType = PropTypes.shape({
+  month: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+});
+
 const styles = {
   footer: {
     padding: 0,
@@ -16,9 +21,9 @@ class RangePopover extends React.Component {
     onSave: PropTypes.func,
     onClose: PropTypes.func,
     onChange: PropTypes.func,
-    showButtons: PropTypes.func.bool,
-    start: PropTypes.string.isRequired,
-    end: PropTypes.string.isRequired,
+    showButtons: PropTypes.bool,
+    start: monthPropType.isRequired,
+    end: monthPropType.isRequired,
   };
 
   static defaultProps = {
@@ -35,10 +40,8 @@ class RangePopover extends React.Component {
     this.onChange = this.onChange.bind(this);
 
     this.state = {
-      start: { year: 2012, month: 1 },
-      end: { year: 2012, month: 2 },
-      //  start: dateParts(props.start),
-      //  end: dateParts(props.end),
+      start: props.start,
+      end: props.end,
     };
   }
 
@@ -56,29 +59,25 @@ class RangePopover extends React.Component {
 
   onChange() {
     const { start, end } = this.state;
-    this.props.onChange &&
-      this.props.onChange(
-        {
-          //  start: moment().year(start.year).month(start.month - 1).date(1).format(DATE_FORMAT),
-          //  end: moment().year(end.year).month(end.month).date(0).format(DATE_FORMAT),
-        }
-      );
+    this.props.onChange && this.props.onChange(this.state);
   }
 
   onSave() {
     const { start, end } = this.state;
-    this.props.onSave &&
-      this.props.onSave(
-        {
-          //  start: moment().year(start.year).month(start.month - 1).date(1).format(DATE_FORMAT),
-          //  end: moment().year(end.year).month(end.month).date(0).format(DATE_FORMAT),
-        }
-      );
+    this.props.onSave && this.props.onSave(this.state);
   }
 
   render() {
     const { start, end } = this.state;
-    const { onSave, onClose, onChange, start: _s, end: _e, showButtons, ...props } = this.props;
+    const {
+      onSave,
+      onClose,
+      onChange,
+      start: _s,
+      end: _e,
+      showButtons,
+      ...props
+    } = this.props;
 
     return (
       <Popover {...props}>

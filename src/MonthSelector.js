@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-
 import { Glyphicon, Button } from "react-bootstrap";
 import moment from "moment";
 
