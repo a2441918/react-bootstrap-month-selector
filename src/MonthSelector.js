@@ -83,7 +83,7 @@ class MonthSelector extends React.Component {
           style={styles.monthButton}
           onClick={() => this.onSelect(month)}
         >
-          {moment().month(month - 1).format("MMM")}
+          {moment().month(month).format("MMM")}
         </Button>
       </div>
     );
@@ -91,7 +91,7 @@ class MonthSelector extends React.Component {
 
   render() {
     const months = [];
-    for (var i = 1; i <= 12; i++) {
+    for (var i = 0; i < 12; i++) {
       months.push(this.renderMonth(i));
     }
 
